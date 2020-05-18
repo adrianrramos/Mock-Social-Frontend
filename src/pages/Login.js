@@ -3,6 +3,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import PropTypes from "prop-types";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
+import history from "../history";
 import axios from "axios";
 
 // MUI Components
@@ -16,7 +17,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({ errors: {} });
+  const [errors, setErrors] = useState({});
 
   const classes = useStyles();
 
@@ -33,7 +34,7 @@ const Login = () => {
       .then(res => {
         console.log(res.data);
         setLoading(false);
-        this.props.history.push("/");
+        history.push("/");
       })
       .catch(err => {
         setErrors(err.response.data);

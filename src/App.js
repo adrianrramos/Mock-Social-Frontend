@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "./history";
 
 import "./App.css";
 import Home from "./pages/Home";
@@ -11,7 +12,7 @@ export class App extends Component {
   render() {
     return (
       <div className="app-body">
-        <BrowserRouter>
+        <Router history={history}>
           <div className="container">
             <NavBar />
             <Switch>
@@ -20,7 +21,7 @@ export class App extends Component {
               <Route exact path="/signup" component={Signup} />
             </Switch>
           </div>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

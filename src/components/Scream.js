@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     marginBottom: 20,
   },
   image: {
-    width: 125,
+    minWidth: 125,
   },
   content: {
     padding: 25,
