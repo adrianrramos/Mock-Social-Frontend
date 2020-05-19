@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
-import history from "../history";
-import axios from "axios";
+import Proptypes from "prop-types";
 
 // MUI Components
 import TextField from "@material-ui/core/TextField";
@@ -13,9 +12,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import globalTheme from "../util/theme";
 
+// Redux
+import { connect } from "react-redux";
+import { loginUser } from "../redux/actions/userActions";
+
 const useStyles = makeStyles({ ...globalTheme });
 
-const Login = () => {
+const Login = ({ UI: { loading } }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,6 +32,8 @@ const Login = () => {
       email,
       password,
     };
+
+    this.props.loginUser(userData);
   };
 
   return (
@@ -97,4 +102,19 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  loginUser: Proptypes.func.isRequired,
+  user: Proptypes.object.isRequired,
+  UI: Proptypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+const mapActionsToProps = {
+  loginUser,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Login);
