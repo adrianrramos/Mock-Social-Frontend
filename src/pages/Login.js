@@ -18,30 +18,17 @@ const useStyles = makeStyles({ ...globalTheme });
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoading(true);
 
     const userData = {
       email,
       password,
     };
-    axios
-      .post("/login", userData)
-      .then(res => {
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch(err => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
   };
 
   return (
