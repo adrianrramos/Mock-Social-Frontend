@@ -32,7 +32,7 @@ const Login = () => {
     axios
       .post("/login", userData)
       .then(res => {
-        console.log(res.data);
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
         setLoading(false);
         history.push("/");
       })
@@ -109,28 +109,28 @@ const Login = () => {
 };
 
 const useStyles = makeStyles({
-  // form: {
-  //   textAlign: "center",
-  // },
-  // pageTitle: {
-  //   marginBottom: 10,
-  // },
-  // imgLogo: {
-  //   width: 100,
-  //   height: "auto",
-  //   margin: "30px auto",
-  // },
-  // textFeild: {
-  //   margin: "10px auto",
-  // },
-  // button: {
-  //   margin: "20px auto",
-  //   textAlign: "center",
-  // },
-  // customError: {
-  //   color: "red",
-  // },
-  // progress: {},
+  form: {
+    textAlign: "center",
+  },
+  pageTitle: {
+    marginBottom: 10,
+  },
+  imgLogo: {
+    width: 100,
+    height: "auto",
+    margin: "30px auto",
+  },
+  textFeild: {
+    margin: "10px auto",
+  },
+  button: {
+    margin: "20px auto",
+    textAlign: "center",
+  },
+  customError: {
+    color: "red",
+  },
+  progress: {},
 });
 
 Login.propTypes = {
