@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
 import history from "../history";
@@ -11,6 +10,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import globalTheme from "../util/theme";
+
+const useStyles = makeStyles({ ...globalTheme });
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -134,30 +137,5 @@ const Signup = () => {
     </Grid>
   );
 };
-
-const useStyles = makeStyles({
-  form: {
-    textAlign: "center",
-  },
-  pageTitle: {
-    marginBottom: 10,
-  },
-  imgLogo: {
-    width: 100,
-    height: "auto",
-    margin: "30px auto",
-  },
-  textFeild: {
-    margin: "10px auto",
-  },
-  button: {
-    margin: "20px auto",
-    textAlign: "center",
-  },
-  customError: {
-    color: "red",
-  },
-  progress: {},
-});
 
 export default Signup;

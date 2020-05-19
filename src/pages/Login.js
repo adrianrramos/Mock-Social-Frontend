@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import PropTypes from "prop-types";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
 import history from "../history";
@@ -12,6 +10,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import globalTheme from "../util/theme";
+
+const useStyles = makeStyles({ ...globalTheme });
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -106,35 +108,6 @@ const Login = () => {
       <Grid item sm />
     </Grid>
   );
-};
-
-const useStyles = makeStyles({
-  form: {
-    textAlign: "center",
-  },
-  pageTitle: {
-    marginBottom: 10,
-  },
-  imgLogo: {
-    width: 100,
-    height: "auto",
-    margin: "30px auto",
-  },
-  textFeild: {
-    margin: "10px auto",
-  },
-  button: {
-    margin: "20px auto",
-    textAlign: "center",
-  },
-  customError: {
-    color: "red",
-  },
-  progress: {},
-});
-
-Login.propTypes = {
-  classes: PropTypes.object.isRequired,
 };
 
 export default Login;
