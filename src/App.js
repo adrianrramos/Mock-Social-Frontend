@@ -37,22 +37,12 @@ export class App extends Component {
       <div className="app-body">
         <ThemeProvider theme={theme}>
           <Router history={history}>
+            <NavBar />
             <div className="container">
-              <NavBar />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <AuthRoute
-                  exact
-                  path="/login"
-                  component={Login}
-                  authenticated={authenticated}
-                />
-                <AuthRoute
-                  exact
-                  path="/signup"
-                  component={Signup}
-                  authenticated={authenticated}
-                />
+                <AuthRoute exact path="/login" component={Login} />
+                <AuthRoute exact path="/signup" component={Signup} />
               </Switch>
             </div>
           </Router>

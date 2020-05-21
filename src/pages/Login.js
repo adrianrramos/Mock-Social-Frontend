@@ -18,7 +18,7 @@ import { loginUser } from "../redux/actions/userActions";
 
 const useStyles = makeStyles({ ...globalTheme });
 
-const Login = ({ UI: { loading } }) => {
+const Login = ({ UI: { loading }, loginUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,11 +29,11 @@ const Login = ({ UI: { loading } }) => {
     e.preventDefault();
 
     const userData = {
-      email,
-      password,
+      email: email,
+      password: password,
     };
 
-    this.props.loginUser(userData);
+    loginUser(userData);
   };
 
   return (
