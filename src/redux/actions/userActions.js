@@ -29,7 +29,6 @@ export const loginUser = userData => dispatch => {
 
 export const signupUser = newUserData => dispatch => {
   dispatch({ type: LOADING_UI });
-
   axios
     .post("/signup", newUserData)
     .then(res => {

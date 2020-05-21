@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
-import history from "../history";
-import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { signupUser } from "../redux/actions/userActions";
 
 // MUI Components
 import TextField from "@material-ui/core/TextField";
@@ -15,19 +16,21 @@ import globalTheme from "../util/theme";
 
 const useStyles = makeStyles({ ...globalTheme });
 
-const Signup = () => {
+const Signup = ({ signupUser, user, UI, UI: { loading } }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [handle, setHandle] = useState("");
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoading(true);
+
+    if (UI.errors) {
+      setErrors(UI.errors);
+    }
 
     const newUserData = {
       email: email,
@@ -35,17 +38,7 @@ const Signup = () => {
       confirmPassword: confirmPassword,
       handle: handle,
     };
-    axios
-      .post("/signup", newUserData)
-      .then(res => {
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch(err => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
+    signupUser(newUserData);
   };
 
   return (
@@ -138,4 +131,15 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+Signup.propTypes = {
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+export default connect(mapStateToProps, { signupUser })(Signup);
