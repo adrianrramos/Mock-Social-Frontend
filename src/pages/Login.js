@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
 import Proptypes from "prop-types";
@@ -23,14 +23,16 @@ const Login = ({ UI: { loading }, UI, loginUser }) => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    if (UI.errors) {
+      setErrors(UI.errors);
+    }
+  }, [UI.errors]);
+
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    if (UI.errors) {
-      setErrors(UI.errors);
-    }
 
     const userData = {
       email: email,

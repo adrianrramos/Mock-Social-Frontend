@@ -6,7 +6,7 @@ import {
   CLEAR_ERRORS,
   LOADING_UI,
   SET_UNAUTHENTICATED,
-} from "../reducers/types";
+} from "../types";
 
 export const loginUser = userData => dispatch => {
   dispatch({ type: LOADING_UI });

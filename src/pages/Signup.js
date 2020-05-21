@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../images/piggy.webp";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -25,12 +25,14 @@ const Signup = ({ signupUser, user, UI, UI: { loading } }) => {
 
   const classes = useStyles();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
+  useEffect(() => {
     if (UI.errors) {
       setErrors(UI.errors);
     }
+  }, [UI.errors]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
 
     const newUserData = {
       email: email,
@@ -134,7 +136,7 @@ const Signup = ({ signupUser, user, UI, UI: { loading } }) => {
 Signup.propTypes = {
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired,
+  signupUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
