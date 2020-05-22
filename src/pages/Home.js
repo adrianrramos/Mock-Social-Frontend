@@ -1,13 +1,16 @@
 // Dependencies
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import PropTypes from "prop-types";
 // Components
 import Grid from "@material-ui/core/Grid";
 import Scream from "../components/Scream";
 import Profile from "../components/Profile";
+// Redux
+import { connect } from "react-redux";
+import { getScreams } from "../redux/actions/dataActions";
 
-const Home = () => {
+const Home = ({ getScreams }) => {
   const [screams, setScreams] = useState(null);
 
   const fetchScreams = () => {
@@ -41,4 +44,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+Home.propTypes = {
+  getScreams: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  data: state.data,
+});
+
+export default connect(mapStateToProps, { getScreams })(Home);
