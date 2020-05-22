@@ -7,15 +7,13 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import globalTheme from "../util/theme";
 // Redux
-import { connect, createDispatchHook } from "react-redux";
+import { connect } from "react-redux";
 import { editUserDetails } from "../redux/actions/userActions";
 
 const styles = makeStyles({ ...globalTheme });
@@ -30,7 +28,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
 
   useEffect(() => {
     mapDetailsToState();
-  }, []);
+  });
 
   const handleOpen = () => {
     setOpen(true);
@@ -52,14 +50,14 @@ const EditDetails = ({ editUserDetails, credentials }) => {
     handleClose();
   };
 
-  const mapDetailsToState = credentials => {
+  const mapDetailsToState = () => {
     credentials.bio && setBio(credentials.bio);
-    credentials.website && setBio(credentials.website);
-    credentials.loaction && setBio(credentials.loaction);
+    credentials.website && setWebsite(credentials.website);
+    credentials.location && setLocation(credentials.location);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <IconButton onClick={handleOpen} className={classes.button}>
         <EditIcon color="primary" />
       </IconButton>
@@ -107,7 +105,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
           </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
