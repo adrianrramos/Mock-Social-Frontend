@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
+import CustomButton from "../components/CustomButton";
 // MUI components
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+// Icons
+import ChatIcon from "@material-ui/icons/Chat";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 // Redux
 import { connect } from "react-redux";
 import { likeScream, unlikeScream } from "../redux/actions/dataActions";
@@ -31,6 +36,7 @@ const useStyles = makeStyles({
 const Scream = ({
   likeScream,
   unlikeScream,
+  user,
   scream: {
     body,
     createdAt,
@@ -42,8 +48,38 @@ const Scream = ({
   },
 }) => {
   const classes = useStyles();
-  dayjs.extend(relativeTime);
 
+  const isScreamLiked = () => {
+    if (user.likes && user.likes.find(like => like.screamId === screamId))
+      return true;
+    else return false;
+  };
+
+  const handleLikeScream = () => {
+    likeScream(screamId);
+  };
+
+  const handleUnlikeScream = () => {
+    unlikeScream(screamId);
+  };
+
+  const likeButton = !user.authenticated ? (
+    <CustomButton tip="Like this OINK">
+      <Link to="/login">
+        <FavoriteBorder color="primary" />
+      </Link>
+    </CustomButton>
+  ) : isScreamLiked() ? (
+    <CustomButton tip="Unlike" onClick={handleUnlikeScream}>
+      <FavoriteIcon color="primary" />
+    </CustomButton>
+  ) : (
+    <CustomButton tip="Like" onClick={handleLikeScream}>
+      <FavoriteBorder color="primary" />
+    </CustomButton>
+  );
+
+  dayjs.extend(relativeTime);
   return (
     <Card key={screamId} className={classes.card}>
       <CardMedia
@@ -63,6 +99,12 @@ const Scream = ({
         </Typography>
         <Typography variant="body2">{dayjs(createdAt).fromNow()}</Typography>
         <Typography variant="body1">{body}</Typography>
+        {likeButton}
+        <span>{likeCount} Likes</span>
+        <CustomButton tip="Comments">
+          <ChatIcon color="primary" />
+        </CustomButton>
+        <span>{commentCount} Comments</span>
       </CardContent>
     </Card>
   );
@@ -73,6 +115,9 @@ Scream.propTypes = {
   unlikeScream: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  user: state.user,
+  scream: state.data.scream,
+});
 
 export default connect(mapStateToProps, { likeScream, unlikeScream })(Scream);
