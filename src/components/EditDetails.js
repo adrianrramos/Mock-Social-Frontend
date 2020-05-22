@@ -29,12 +29,86 @@ const EditDetails = ({ editUserDetails, credentials }) => {
   const classes = styles();
 
   useEffect(() => {
+    mapDetailsToState();
+  }, []);
+
+  const handleOpen = () => {
+    setOpen(true);
+    mapDetailsToState();
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = () => {
+    const userDetails = {
+      bio: bio,
+      website: website,
+      location: location,
+    };
+
+    editUserDetails(userDetails);
+    handleClose();
+  };
+
+  const mapDetailsToState = credentials => {
     credentials.bio && setBio(credentials.bio);
     credentials.website && setBio(credentials.website);
     credentials.loaction && setBio(credentials.loaction);
-  }, []);
+  };
 
-  return <React.Fragment></React.Fragment>;
+  return (
+    <React.Fragment>
+      <IconButton onClick={handleOpen} className={classes.button}>
+        <EditIcon color="primary" />
+      </IconButton>
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+        <DialogTitle>Edit your details</DialogTitle>
+        <DialogContent>
+          <form>
+            <TextField
+              name="bio"
+              type="text"
+              label="bio"
+              multiline
+              rows="3"
+              placeholder="A short bio about yourself"
+              className={classes.textFeild}
+              value={bio}
+              onChange={event => setBio(event.target.value)}
+            ></TextField>
+            <TextField
+              name="website"
+              type="text"
+              label="website"
+              placeholder="Your own professional/personal site"
+              className={classes.textFeild}
+              value={website}
+              onChange={event => setWebsite(event.target.value)}
+            ></TextField>
+            <TextField
+              name="location"
+              type="text"
+              label="location"
+              placeholder="Where you reside"
+              className={classes.textFeild}
+              value={location}
+              onChange={event => setLocation(event.target.value)}
+            ></TextField>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
 };
 
 EditDetails.propTypes = {
