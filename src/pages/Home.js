@@ -1,6 +1,5 @@
 // Dependencies
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 // Components
 import Grid from "@material-ui/core/Grid";
@@ -10,23 +9,12 @@ import Profile from "../components/Profile";
 import { connect } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
 
-const Home = ({ getScreams }) => {
-  const [screams, setScreams] = useState(null);
-
-  const fetchScreams = () => {
-    axios
-      .get("/screams")
-      .then(res => {
-        setScreams(res.data);
-      })
-      .catch(err => console.log(err));
-  };
-
+const Home = ({ data: { screams, loading }, getScreams }) => {
   useEffect(() => {
-    fetchScreams();
+    getScreams();
   }, []);
 
-  let recentScreamsMarkup = screams ? (
+  let recentScreamsMarkup = !loading ? (
     screams.map(scream => <Scream scream={scream} key={scream.screamId} />)
   ) : (
     <p>Loading...</p>
