@@ -1,6 +1,7 @@
 // Dependencies
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
+import CustomButton from "./CustomButton";
 // Material UI
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -16,7 +17,12 @@ import globalTheme from "../util/theme";
 import { connect } from "react-redux";
 import { editUserDetails } from "../redux/actions/userActions";
 
-const styles = makeStyles({ ...globalTheme });
+const styles = makeStyles({
+  ...globalTheme,
+  button: {
+    float: "right",
+  },
+});
 
 const EditDetails = ({ editUserDetails, credentials }) => {
   const [bio, setBio] = useState("");
@@ -58,9 +64,14 @@ const EditDetails = ({ editUserDetails, credentials }) => {
 
   return (
     <Fragment>
-      <IconButton onClick={handleOpen} className={classes.button}>
+      <CustomButton
+        tip="Edit Profile"
+        placement="top"
+        onClick={handleOpen}
+        className={classes.button}
+      >
         <EditIcon color="primary" />
-      </IconButton>
+      </CustomButton>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>Edit your details</DialogTitle>
         <DialogContent>
@@ -110,7 +121,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
 };
 
 EditDetails.propTypes = {
-  user: PropTypes.object.isRequired,
+  credentials: PropTypes.object.isRequired,
   editUserDetails: PropTypes.func.isRequired,
 };
 

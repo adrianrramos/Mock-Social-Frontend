@@ -22,6 +22,7 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Redux
 import { connect } from "react-redux";
 import { uploadImage, logoutUser } from "../redux/actions/userActions";
+import CustomButton from "./CustomButton";
 
 const useStyles = makeStyles({ ...globalTheme });
 
@@ -64,11 +65,14 @@ const Profile = ({
               hidden="hidden"
               onChange={event => handleImageChange(event)}
             />
-            <Tooltip title="Edit Photo" placement="top">
-              <IconButton onClick={handleEditPicture} className="button">
-                <EditIcon color="primary" />
-              </IconButton>
-            </Tooltip>
+            <CustomButton
+              tip="Edit Photo"
+              onClick={handleEditPicture}
+              btnClassName="button"
+              placement="top"
+            >
+              <EditIcon color="primary" />
+            </CustomButton>
           </div>
           <hr />
           <div className="profile-details">
@@ -105,11 +109,9 @@ const Profile = ({
             <span> Joined</span>
             {"   " + dayjs(createdAt).format("MMM YYYY")}
           </div>
-          <Tooltip title="Logout" placement="top">
-            <IconButton onClick={handleLogout}>
-              <KeyboardReturn />
-            </IconButton>
-          </Tooltip>
+          <CustomButton tip="Logout" placement="top" onClick={handleLogout}>
+            <KeyboardReturn />
+          </CustomButton>
           <EditDetails />
         </div>
       </Paper>
