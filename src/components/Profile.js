@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import EditDetails from "./EditDetails";
 // Material UI
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import globalTheme from "../util/theme";
@@ -17,8 +18,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import LinkIcon from "@material-ui/icons/Link";
 import LocationOn from "@material-ui/icons/LocationOn";
 import CalendarToday from "@material-ui/icons/CalendarToday";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Redux
 import { connect } from "react-redux";
+import { uploadImage, logoutUser } from "../redux/actions/userActions";
 
 const useStyles = makeStyles({ ...globalTheme });
 
@@ -28,19 +31,23 @@ const Profile = ({
     loading,
     authenticated,
   },
+  uploadImage,
+  logoutUser,
 }) => {
   const handleImageChange = event => {
     const image = event.target.files[0];
-    // FIXME: send to server
     const formData = new FormData();
     formData.append("image", image, image.name);
-
-    this.props.uploadImage(formData);
+    uploadImage(formData);
   };
 
   const handleEditPicture = () => {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
+  };
+
+  const handleLogout = () => {
+    logoutUser();
   };
 
   const classes = useStyles();
@@ -98,6 +105,12 @@ const Profile = ({
             <span> Joined</span>
             {"   " + dayjs(createdAt).format("MMM YYYY")}
           </div>
+          <Tooltip title="Logout" placement="top">
+            <IconButton onClick={handleLogout}>
+              <KeyboardReturn />
+            </IconButton>
+          </Tooltip>
+          <EditDetails />
         </div>
       </Paper>
     ) : (
@@ -138,6 +151,8 @@ const mapStateToProps = state => ({
 
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, { logoutUser, uploadImage })(Profile);
