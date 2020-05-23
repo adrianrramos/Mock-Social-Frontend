@@ -15,3 +15,4 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const SET_SCREAMS = "SET_SCREAMS";
 export const SET_SCREAM = "SET_SCREAM";
 export const LOADING_DATA = "LOADING_DATA";
+export const DELETE_SCREAM = "DELETE_SCREAM";

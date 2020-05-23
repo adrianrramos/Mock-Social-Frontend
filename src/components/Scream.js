@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 import CustomButton from "../components/CustomButton";
+import DeleteScream from "./DeleteScream";
 // MUI components
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -36,7 +37,11 @@ const useStyles = makeStyles({
 const Scream = ({
   likeScream,
   unlikeScream,
-  user,
+  user: {
+    authenticated,
+    credentials: { handle },
+    likes,
+  },
   scream: {
     body,
     createdAt,
@@ -50,8 +55,7 @@ const Scream = ({
   const classes = useStyles();
 
   const isScreamLiked = () => {
-    if (user.likes && user.likes.find(like => like.screamId === screamId))
-      return true;
+    if (likes && likes.find(like => like.screamId === screamId)) return true;
     else return false;
   };
 
@@ -63,7 +67,7 @@ const Scream = ({
     unlikeScream(screamId);
   };
 
-  const likeButton = !user.authenticated ? (
+  const likeButton = !authenticated ? (
     <CustomButton tip="Like this OINK">
       <Link to="/login">
         <FavoriteBorder color="primary" />
@@ -78,6 +82,11 @@ const Scream = ({
       <FavoriteBorder color="primary" />
     </CustomButton>
   );
+
+  const deleteButton =
+    authenticated && userHandle === handle ? (
+      <DeleteScream screamId={screamId} />
+    ) : null;
 
   dayjs.extend(relativeTime);
   return (
@@ -97,6 +106,7 @@ const Scream = ({
         >
           {userHandle}
         </Typography>
+        {deleteButton}
         <Typography variant="body2">{dayjs(createdAt).fromNow()}</Typography>
         <Typography variant="body1">{body}</Typography>
         {likeButton}
