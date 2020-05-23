@@ -113,11 +113,11 @@ const Scream = ({
 Scream.propTypes = {
   likeScream: PropTypes.func.isRequired,
   unlikeScream: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   user: state.user,
-  scream: state.data.scream,
 });
 
 export default connect(mapStateToProps, { likeScream, unlikeScream })(Scream);

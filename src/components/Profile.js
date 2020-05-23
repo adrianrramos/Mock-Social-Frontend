@@ -11,8 +11,6 @@ import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
 //Icons
 import EditIcon from "@material-ui/icons/Edit";
 import LinkIcon from "@material-ui/icons/Link";
