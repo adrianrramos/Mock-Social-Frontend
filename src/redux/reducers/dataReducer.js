@@ -12,6 +12,8 @@ const initialState = {
   loading: false,
 };
 
+let index;
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case LOADING_DATA:
@@ -27,7 +29,7 @@ export default function (state = initialState, action) {
       };
     case LIKE_SCREAM:
     case UNLIKE_SCREAM:
-      let index = state.screams.findIndex(
+      index = state.screams.findIndex(
         scream => scream.screamId === action.payload.screamId
       );
       state.screams[index] = action.payload;
@@ -39,7 +41,9 @@ export default function (state = initialState, action) {
         scream => scream.screamId === action.payload
       );
       state.screams.splice(index, 1);
-      return {};
+      return {
+        ...state,
+      };
     default:
       return state;
   }

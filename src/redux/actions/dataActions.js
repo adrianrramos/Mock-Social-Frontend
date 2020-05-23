@@ -57,6 +57,7 @@ export const unlikeScream = screamId => dispatch => {
     });
 };
 
+// Delete your scream
 export const deleteScream = screamId => dispatch => {
   axios
     .delete(`/scream/${screamId}`)

@@ -16,7 +16,7 @@ import { deleteScream } from "../redux/actions/dataActions";
 
 const styles = makeStyles({ ...globalTheme });
 
-const DeleteScream = ({ screamId }) => {
+const DeleteScream = ({ screamId, deleteScream }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -24,6 +24,11 @@ const DeleteScream = ({ screamId }) => {
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDeleteScream = () => {
+    deleteScream(screamId);
     setOpen(false);
   };
 
@@ -37,7 +42,7 @@ const DeleteScream = ({ screamId }) => {
       >
         <DeleteOutline />
       </CustomButton>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>DELETE OINK</DialogTitle>
         <DialogContent>
           Are you sure you want to delete this oink?
@@ -46,7 +51,11 @@ const DeleteScream = ({ screamId }) => {
           <Button onClick={handleClose} variant="outlined" color="primary">
             Cancel
           </Button>
-          <Button onClick={deleteScream} variant="contained" color="secondary">
+          <Button
+            onClick={handleDeleteScream}
+            variant="contained"
+            color="secondary"
+          >
             DELETE
           </Button>
         </DialogActions>
