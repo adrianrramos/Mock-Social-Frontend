@@ -126,3 +126,22 @@ export const postSingleComment = (screamId, commentData) => dispatch => {
       });
     });
 };
+
+// Get screams from user
+export const getUserScreamData = userHandle => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  axios
+    .get(`/user/${userHandle}`)
+    .then(res => {
+      dispatch({
+        type: SET_SCREAMS,
+        payload: res.data.screams,
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: SET_SCREAMS,
+        payload: null,
+      });
+    });
+};

@@ -12,6 +12,7 @@ import globalTheme from "./util/theme";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import User from "./pages/User";
 // Components
 import NavBar from "./components/NavBar";
 import AuthRoute from "./util/AuthRoute";
@@ -48,6 +49,7 @@ export class App extends Component {
                 <Route exact path="/" component={Home} />
                 <AuthRoute exact path="/login" component={Login} />
                 <AuthRoute exact path="/signup" component={Signup} />
+                <Route exact path="/users/:handle" component={User} />
               </Switch>
             </div>
           </Router>
