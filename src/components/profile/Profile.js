@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
 // Material UI
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import globalTheme from "../util/theme";
+import globalTheme from "../../util/theme";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
@@ -19,8 +19,8 @@ import CalendarToday from "@material-ui/icons/CalendarToday";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Redux
 import { connect } from "react-redux";
-import { uploadImage, logoutUser } from "../redux/actions/userActions";
-import CustomButton from "./CustomButton";
+import { uploadImage, logoutUser } from "../../redux/actions/userActions";
+import CustomButton from "../CustomButton";
 
 const useStyles = makeStyles({ ...globalTheme });
 

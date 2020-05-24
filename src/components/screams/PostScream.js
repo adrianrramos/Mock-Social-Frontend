@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 import PropTypes from "prop-types";
 // Material UI
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import globalTheme from "../util/theme";
+import globalTheme from "../../util/theme";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -15,7 +15,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
 //Redux
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = makeStyles({
   ...globalTheme,

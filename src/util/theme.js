@@ -35,6 +35,11 @@ const globalTheme = {
     color: "red",
   },
   progress: {},
+  hrVisible: {
+    width: "100%",
+    marginBottom: "4px ",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+  },
 };
 
 export default globalTheme;

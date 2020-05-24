@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import globalTheme from "../util/theme";
-import CustomButton from "./CustomButton";
+import globalTheme from "../../util/theme";
+import CustomButton from "../CustomButton";
 // Materiel UI
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -12,7 +12,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 // Redux
 import { connect } from "react-redux";
-import { deleteScream } from "../redux/actions/dataActions";
+import { deleteScream } from "../../redux/actions/dataActions";
 
 const styles = makeStyles({ ...globalTheme });
 

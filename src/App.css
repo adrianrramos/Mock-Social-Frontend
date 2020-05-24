@@ -26,3 +26,8 @@ body {
 .nav-container svg {
   color: white;
 }
+
+hr {
+  border: none;
+  margin: 4px auto;
+}

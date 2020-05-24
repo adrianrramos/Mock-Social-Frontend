@@ -1,7 +1,7 @@
 // Dependencies
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 // Material UI
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -11,10 +11,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import EditIcon from "@material-ui/icons/Edit";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import globalTheme from "../util/theme";
+import globalTheme from "../../util/theme";
 // Redux
 import { connect } from "react-redux";
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 
 const styles = makeStyles({
   ...globalTheme,
@@ -32,12 +32,12 @@ const EditDetails = ({ editUserDetails, credentials }) => {
   const classes = styles();
 
   useEffect(() => {
-    mapDetailsToState();
-  });
+    mapDetailsToState(credentials);
+  }, [credentials]);
 
   const handleOpen = () => {
     setOpen(true);
-    mapDetailsToState();
+    mapDetailsToState(credentials);
   };
 
   const handleClose = () => {
@@ -55,7 +55,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
     handleClose();
   };
 
-  const mapDetailsToState = () => {
+  const mapDetailsToState = credentials => {
     credentials.bio && setBio(credentials.bio);
     credentials.website && setWebsite(credentials.website);
     credentials.location && setLocation(credentials.location);

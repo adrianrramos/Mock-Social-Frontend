@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
-import PostScream from "./PostScream";
+import PostScream from "./screams/PostScream";
 
 const NavBar = ({ authenticated }) => {
   return (
