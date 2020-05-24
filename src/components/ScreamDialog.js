@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
+import LikeButton from "./LikeButton";
 // Material UI
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +15,7 @@ import globalTheme from "../util/theme";
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
+import ChatIcon from "@material-ui/icons/Chat";
 // Redux
 import { connect } from "react-redux";
 import { getScream } from "../redux/actions/dataActions";
@@ -22,14 +23,18 @@ import { getScream } from "../redux/actions/dataActions";
 const styles = makeStyles({
   ...globalTheme,
   profileImage: {
-    maxWidth: 150,
-    height: 150,
+    maxWidth: 100,
+    height: 100,
     borderRadius: "50%",
     objectFit: "cover",
   },
   spinnerDiv: {
     textAlign: "center",
     margin: "50px auto",
+  },
+  closeButton: {
+    position: "absolute",
+    left: "90%",
   },
 });
 
@@ -54,14 +59,14 @@ const ScreamDialog = ({
 
   const dialogMarkup = loading ? (
     <div className={classes.spinnerDiv}>
-      <CircularProgress size={200} />
+      <CircularProgress size={150} />
     </div>
   ) : (
-    <Grid container spacing={16}>
+    <Grid container spacing={10}>
       <Grid item sm={5}>
         <img src={userImage} alt="Profile" className={classes.profileImage} />
       </Grid>
-      <Grid item sm={7}>
+      <Grid item sm={5}>
         <Typography
           component={Link}
           color="primary"
@@ -99,6 +104,12 @@ const ScreamDialog = ({
         </CustomButton>
         <DialogContent className={classes.dialogContent}>
           {dialogMarkup}
+          <LikeButton screamId={screamId} />
+          <span>{likeCount} likes</span>
+          <CustomButton tip="Comments">
+            <ChatIcon color="primary" />
+          </CustomButton>
+          <span>{commentCount} Comments</span>
         </DialogContent>
       </Dialog>
     </Fragment>
