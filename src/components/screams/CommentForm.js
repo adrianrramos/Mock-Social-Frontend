@@ -13,7 +13,15 @@ import { postSingleComment } from "../../redux/actions/dataActions";
 
 const style = makeStyles({ ...globalTheme });
 
-const CommentForm = ({ screamId, postSingleComment, UI, UI: { loading } }) => {
+const CommentForm = ({
+  screamId,
+  authenticated,
+  postSingleComment,
+  UI,
+  UI: { loading },
+}) => {
+  const classes = style();
+
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -31,8 +39,7 @@ const CommentForm = ({ screamId, postSingleComment, UI, UI: { loading } }) => {
     postSingleComment(screamId, { body: body });
   };
 
-  const classes = style();
-  return (
+  const commentFormMarkup = authenticated ? (
     <Grid item sm={5}>
       <form onSubmit={e => e.preventDefault()}>
         <TextField
@@ -60,16 +67,23 @@ const CommentForm = ({ screamId, postSingleComment, UI, UI: { loading } }) => {
           )}
         </Button>
       </form>
+      <hr className={classes.hrVisible} />
     </Grid>
-  );
+  ) : null;
+
+  return commentFormMarkup;
 };
 
 CommentForm.propTypes = {
   postSingleComment: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired,
+  screamId: PropTypes.string.isRequired,
+  authenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   UI: state.UI,
+  authenticated: state.user.authenticated,
 });
 
 export default connect(mapStateToProps, { postSingleComment })(CommentForm);
