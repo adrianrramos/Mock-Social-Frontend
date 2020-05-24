@@ -15,7 +15,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
 //Redux
 import { connect } from "react-redux";
-import { postScream } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../redux/actions/dataActions";
 
 const styles = makeStyles({
   ...globalTheme,
@@ -24,7 +24,7 @@ const styles = makeStyles({
   closeButton: { position: "absolute", left: "90%", top: "10%" },
 });
 
-const PostScream = ({ postScream, UI: { loading }, UI }) => {
+const PostScream = ({ postScream, clearErrors, UI: { loading }, UI }) => {
   const [body, setBody] = useState("");
   const [open, setOpen] = useState(false);
   const [errors, setErrors] = useState({});
@@ -44,10 +44,12 @@ const PostScream = ({ postScream, UI: { loading }, UI }) => {
   };
 
   const handleClose = () => {
+    clearErrors();
     setOpen(false);
   };
 
-  const handlePostScream = () => {
+  const handlePostScream = event => {
+    event.preventDefault();
     postScream({ body: body });
   };
 
@@ -72,7 +74,7 @@ const PostScream = ({ postScream, UI: { loading }, UI }) => {
             🐷
           </span>
         </DialogTitle>
-        <form>
+        <form onSubmit={e => e.preventDefault()}>
           <TextField
             name="body"
             type="text"
@@ -108,6 +110,7 @@ const PostScream = ({ postScream, UI: { loading }, UI }) => {
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
 };
 
@@ -115,4 +118,6 @@ const mapStateToProps = state => ({
   UI: state.UI,
 });
 
-export default connect(mapStateToProps, { postScream })(PostScream);
+export default connect(mapStateToProps, { postScream, clearErrors })(
+  PostScream
+);
