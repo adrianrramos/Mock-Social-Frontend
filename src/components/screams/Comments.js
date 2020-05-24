@@ -26,17 +26,17 @@ const Comments = ({ comments }) => {
         comments.map((comment, index) => {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
-            <Fragment>
-              <Grid item sm={12}>
+            <Fragment key={createdAt}>
+              <Grid item sm={10}>
                 <Grid container>
-                  <Grid item sm={12}>
+                  <Grid item sm={5}>
                     <img
-                      scr={userImage}
+                      src={userImage}
                       alt="user who commented"
                       className={classes.commentImage}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item sm={5}>
                     <div classes={classes.commentData}>
                       <Typography
                         variant="h5"
@@ -66,7 +66,7 @@ const Comments = ({ comments }) => {
 };
 
 Comments.propTypes = {
-  comments: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
 export default Comments;

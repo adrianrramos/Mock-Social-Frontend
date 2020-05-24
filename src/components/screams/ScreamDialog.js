@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 // Material UI
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -90,6 +91,7 @@ const ScreamDialog = ({
         <span>{commentCount} Comments</span>
       </Grid>
       <hr classes={classes.hrVisible} />
+      <CommentForm screamId={screamId} />
       <Comments comments={comments} />
     </Grid>
   );
