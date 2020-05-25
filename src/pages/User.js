@@ -15,34 +15,48 @@ const styles = makeStyles({ ...globalTheme });
 
 const User = ({ data: { screams, loading }, getUserScreamData, match }) => {
   const [profile, setProfile] = useState(null);
+  const [screamIdParam, setScreamIdParam] = useState(null);
 
-  const getUserProfile = handle =>
+  useEffect(() => {
+    const handle = match.params.handle;
+    const screamId = match.params.screamId;
+
+    if (screamId) setScreamIdParam(screamId);
+
+    getUserScreamData(handle);
+
     axios
       .get(`/user/${handle}`)
       .then(res => setProfile(res.data.user))
       .catch(err => console.log(err));
-
-  useEffect(() => {
-    const handle = match.params.handle;
-    getUserScreamData(handle);
-    getUserProfile(handle);
   }, []);
 
   const screamsMarkup = loading ? (
     <p>Loading Data...</p>
   ) : screams === null ? (
     <p>Sorry, this person has yet to post an Oink!</p>
-  ) : (
+  ) : !screamIdParam ? (
     screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
+  ) : (
+    screams.map(scream => {
+      if (scream.screamId !== screamIdParam) {
+        return <Scream key={scream.screamId} scream={scream} />;
+      } else {
+        return (
+          <Scream key={scream.screamId} scream={scream} openDialog={true} />
+        );
+      }
+    })
   );
 
   const classes = styles();
   return (
-    <Grid container spacing={5}>
-      <Grid item sm={8} xs={12}>
+    <Grid container spacing={0}>
+      <Grid item md={3} sm={2} xs={12}></Grid>
+      <Grid item md={6} sm={8} xs={12}>
         {screamsMarkup}
       </Grid>
-      <Grid item sm={4} xs={12}>
+      <Grid item md={3} sm={2} xs={12}>
         {profile ? (
           <StaticProfile profile={profile} />
         ) : (

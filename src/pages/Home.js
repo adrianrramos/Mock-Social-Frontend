@@ -21,11 +21,12 @@ const Home = ({ data: { screams, loading }, getScreams }) => {
   );
 
   return (
-    <Grid container spacing={5}>
-      <Grid item sm={8} xs={12}>
+    <Grid container spacing={0}>
+      <Grid item md={3} sm={2} xs={12}></Grid>
+      <Grid item md={6} sm={8} xs={12}>
         {recentScreamsMarkup}
       </Grid>
-      <Grid item sm={4} xs={12}>
+      <Grid item md={3} sm={2} xs={12}>
         <Profile />
       </Grid>
     </Grid>

@@ -104,10 +104,6 @@ export const postScream = body => dispatch => {
     });
 };
 
-export const clearErrors = () => dispatch => {
-  dispatch({ type: CLEAR_ERRORS });
-};
-
 // post a comment
 export const postSingleComment = (screamId, commentData) => dispatch => {
   axios
@@ -144,4 +140,8 @@ export const getUserScreamData = userHandle => dispatch => {
         payload: null,
       });
     });
+};
+
+export const clearErrors = () => dispatch => {
+  dispatch({ type: CLEAR_ERRORS });
 };

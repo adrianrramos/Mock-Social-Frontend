@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "../CustomButton";
 import PropTypes from "prop-types";
@@ -46,16 +46,39 @@ const ScreamDialog = ({
   getScream,
   UI: { loading },
   scream: { body, createdAt, likeCount, commentCount, userImage, comments },
+  openDialog,
 }) => {
   const [open, setOpen] = useState(false);
+  const [oldPath, setOldPath] = useState("");
+  const [newPath, setNewPath] = useState("");
+
   const classes = styles();
 
+  useEffect(() => {
+    if (openDialog) {
+      handleOpen();
+    }
+  }, []);
+
   const handleOpen = () => {
+    let currentOldPath = window.location.pathname;
+    const currentNewPath = `/users/${userHandle}/scream/${screamId}`;
+
+    if (currentOldPath === currentNewPath)
+      currentOldPath = `/users/${userHandle}`;
+
+    window.history.pushState(null, null, currentNewPath);
+
+    setOldPath(currentOldPath);
+    setNewPath(currentNewPath);
+
     setOpen(true);
     getScream(screamId);
   };
 
   const handleClose = () => {
+    window.history.pushState(null, null, oldPath);
+
     setOpen(false);
   };
 
@@ -84,11 +107,11 @@ const ScreamDialog = ({
         <hr />
         <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />
-        <span>{likeCount} likes</span>
+        <span>{likeCount}</span>
         <CustomButton tip="Comments">
           <ChatIcon color="primary" />
         </CustomButton>
-        <span>{commentCount} Comments</span>
+        <span>{commentCount}</span>
       </Grid>
       <hr classes={classes.hrVisible} />
       <CommentForm screamId={screamId} />
@@ -97,7 +120,7 @@ const ScreamDialog = ({
   );
 
   return (
-    <Fragment>
+    <Fragment onClick={handleOpen}>
       <CustomButton
         onClick={handleOpen}
         tip="Expand this"

@@ -22,14 +22,24 @@ import { connect } from "react-redux";
 const useStyles = makeStyles({
   card: {
     display: "flex",
-    marginBottom: 20,
+    borderRadius: 0,
   },
   image: {
-    minWidth: 125,
+    minWidth: 50,
+    height: 50,
+    borderRadius: "50%",
+    margin: "10px 0 0 15px",
   },
   content: {
     padding: 25,
     objectFit: "cover",
+  },
+  textRow: {
+    display: "flex",
+    alignItems: "center",
+  },
+  userName: {
+    marginRight: 5,
   },
 });
 
@@ -48,6 +58,7 @@ const Scream = ({
     likeCount,
     commentCount,
   },
+  openDialog,
 }) => {
   const classes = useStyles();
 
@@ -58,35 +69,38 @@ const Scream = ({
 
   dayjs.extend(relativeTime);
   return (
-    <Card key={screamId} className={classes.card}>
+    <Card key={screamId} className={classes.card} variant="outlined">
       <CardMedia
         className={classes.image}
         image={userImage}
         title="Profile Image"
       />
       <CardContent className={classes.content}>
-        <Typography
-          variant="h5"
-          component={Link}
-          to={`/users/${userHandle}`}
-          color="primary"
-          className="link"
-        >
-          {userHandle}
-        </Typography>
-        {deleteButton}
-        <Typography variant="body2">{dayjs(createdAt).fromNow()}</Typography>
+        <div className={classes.textRow}>
+          <Typography
+            variant="h6"
+            component={Link}
+            to={`/users/${userHandle}`}
+            color="black"
+            className={`link ${classes.userName}`}
+          >
+            {userHandle}
+          </Typography>
+          {deleteButton}
+          <Typography variant="body2">{dayjs(createdAt).fromNow()}</Typography>
+        </div>
         <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />
-        <span>{likeCount} Likes</span>
+        <span>{likeCount} </span>
         <CustomButton tip="Comments">
           <ChatIcon color="primary" />
         </CustomButton>
-        <span>{commentCount} Comments</span>
+        <span>{commentCount}</span>
         <ScreamDialog
           screamId={screamId}
           userHandle={userHandle}
           likes={likes}
+          openDialog={openDialog}
         />
       </CardContent>
     </Card>
@@ -95,6 +109,8 @@ const Scream = ({
 
 Scream.propTypes = {
   user: PropTypes.object.isRequired,
+  scream: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({

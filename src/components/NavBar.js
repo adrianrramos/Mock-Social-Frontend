@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import CustomButton from "./CustomButton";
-
+import Notifications from "./Notifications";
 // MUI STUFF
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
-import Notifications from "@material-ui/icons/Notifications";
 import PostScream from "./screams/PostScream";
 
 const NavBar = ({ authenticated }) => {
@@ -26,9 +24,7 @@ const NavBar = ({ authenticated }) => {
                 <HomeIcon />
               </CustomButton>
             </Link>
-            <CustomButton tip="Notifications">
-              <Notifications />
-            </CustomButton>
+            <Notifications />
           </Fragment>
         ) : (
           <Fragment>
