@@ -22,7 +22,16 @@ import { connect } from "react-redux";
 import { uploadImage, logoutUser } from "../../redux/actions/userActions";
 import CustomButton from "../CustomButton";
 
-const useStyles = makeStyles({ ...globalTheme });
+const useStyles = makeStyles({
+  ...globalTheme,
+  image: {
+    minWidth: 150,
+    height: 150,
+    objectFit: "cover",
+    borderRadius: "50%",
+    margin: "10px 0 0 15px",
+  },
+});
 
 const Profile = ({
   user: {
@@ -56,7 +65,7 @@ const Profile = ({
       <Paper className={classes.paper}>
         <div className={classes.profile}>
           <div className="image-wrapper">
-            <img src={imageUrl} alt="user profile" />
+            <img src={imageUrl} alt="user profile" className={classes.image} />
             <input
               type="file"
               id="imageInput"

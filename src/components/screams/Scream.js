@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     margin: "10px 0 0 15px",
   },
   content: {
-    padding: 25,
+    padding: "5px 0 0 25px",
     objectFit: "cover",
   },
   textRow: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   userName: {
-    marginRight: 5,
+    marginRight: 10,
   },
 });
 
@@ -77,17 +77,16 @@ const Scream = ({
       />
       <CardContent className={classes.content}>
         <div className={classes.textRow}>
-          <Typography
-            variant="h6"
-            component={Link}
-            to={`/users/${userHandle}`}
-            color="black"
-            className={`link ${classes.userName}`}
-          >
-            {userHandle}
+          <Typography variant="body1">
+            <Link
+              to={`/users/${userHandle}`}
+              className={`link ${classes.userName}`}
+            >
+              <strong>{userHandle}</strong>
+            </Link>
+            {dayjs(createdAt).fromNow()}
           </Typography>
           {deleteButton}
-          <Typography variant="body2">{dayjs(createdAt).fromNow()}</Typography>
         </div>
         <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />

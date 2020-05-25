@@ -2,7 +2,7 @@ const globalTheme = {
   palette: {
     primary: {
       light: "#33c9dc",
-      main: "#00bcd4",
+      main: "#00acee ",
       dark: "#008394",
       contrastText: "#fff",
     },
@@ -39,6 +39,9 @@ const globalTheme = {
     width: "100%",
     marginBottom: "4px ",
     borderBottom: "1px solid rgba(0,0,0,0.1)",
+  },
+  deleteButton: {
+    marginRight: "30px",
   },
 };
 

@@ -14,7 +14,12 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import { connect } from "react-redux";
 import { deleteScream } from "../../redux/actions/dataActions";
 
-const styles = makeStyles({ ...globalTheme });
+const styles = makeStyles({
+  ...globalTheme,
+  deleteButtonPosition: {
+    marginLeft: 200,
+  },
+});
 
 const DeleteScream = ({ screamId, deleteScream }) => {
   const [open, setOpen] = useState(false);
@@ -39,6 +44,7 @@ const DeleteScream = ({ screamId, deleteScream }) => {
         tip="Delete Scream"
         onClick={handleOpen}
         btnClassname={classes.deleteButton}
+        className={classes.deleteButtonPosition}
       >
         <DeleteOutline />
       </CustomButton>
