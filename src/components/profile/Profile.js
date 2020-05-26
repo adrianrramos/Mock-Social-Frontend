@@ -25,11 +25,32 @@ import CustomButton from "../CustomButton";
 const useStyles = makeStyles({
   ...globalTheme,
   image: {
-    minWidth: 150,
+    width: 150,
     height: 150,
     objectFit: "cover",
     borderRadius: "50%",
     margin: "10px 0 0 15px",
+  },
+  profile: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  profileButtons: {
+    margin: "10px auto",
+    height: 35,
+    width: "50%",
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  profileBottomButtons: {
+    width: "90%",
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  loginSignup: {
+    borderRadius: 20,
   },
 });
 
@@ -116,21 +137,24 @@ const Profile = ({
             <span> Joined</span>
             {"   " + dayjs(createdAt).format("MMM YYYY")}
           </div>
-          <CustomButton tip="Logout" placement="top" onClick={handleLogout}>
-            <KeyboardReturn />
-          </CustomButton>
-          <EditDetails />
+          <div className={classes.profileBottomButtons}>
+            <CustomButton tip="Logout" placement="top" onClick={handleLogout}>
+              <KeyboardReturn />
+            </CustomButton>
+            <EditDetails />
+          </div>
         </div>
       </Paper>
     ) : (
-      <Paper className={classes.paper}>
-        <Typography variant="body2" align="center">
+      <Paper className={classes.paper} variant="outlined">
+        <Typography variant="h6" align="center">
           No profile found, please login
         </Typography>
         <div className={classes.profileButtons}>
           <Button
-            variant="contained"
+            variant="outlined"
             color="primary"
+            className={classes.loginSignup}
             component={Link}
             to="/login"
           >
@@ -139,6 +163,7 @@ const Profile = ({
           <Button
             variant="contained"
             color="primary"
+            className={classes.loginSignup}
             component={Link}
             to="/signup"
           >
