@@ -120,7 +120,7 @@ const ScreamDialog = ({
   );
 
   return (
-    <Fragment onClick={handleOpen}>
+    <Fragment>
       <CustomButton
         onClick={handleOpen}
         tip="Expand this"

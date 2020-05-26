@@ -7,6 +7,7 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
+  MARK_NOTIFICATIONS_READ,
 } from "../types";
 
 export const loginUser = userData => dispatch => {
@@ -89,7 +90,17 @@ export const editUserDetails = userDetails => dispatch => {
     });
 };
 
-export const markNotificationsRead = () => dispatch => {};
+export const markNotificationsRead = notificationIds => dispatch => {
+  axios
+    .post("/notifications", notificationIds)
+    .then(res => {
+      dispatch({
+        type: MARK_NOTIFICATIONS_READ,
+      });
+      console.log("we marked them bro");
+    })
+    .catch(err => console.log(err));
+};
 
 const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`;
