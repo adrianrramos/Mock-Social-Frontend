@@ -10,7 +10,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
-import PostScream from "./screams/PostScream";
+import PostScream from "../screams/PostScream";
 
 const NavBar = ({ authenticated }) => {
   return (

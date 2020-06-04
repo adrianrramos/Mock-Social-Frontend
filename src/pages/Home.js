@@ -8,6 +8,7 @@ import Profile from "../components/profile/Profile";
 // Redux
 import { connect } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
+import PostSkeleton from "../components/layout/PostSkeleton";
 
 const Home = ({ data: { screams, loading }, getScreams }) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Home = ({ data: { screams, loading }, getScreams }) => {
   let recentScreamsMarkup = !loading ? (
     screams.map(scream => <Scream scream={scream} key={scream.screamId} />)
   ) : (
-    <p>Loading...</p>
+    <PostSkeleton />
   );
 
   return (

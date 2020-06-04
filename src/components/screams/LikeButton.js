@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import CustomButton from "../CustomButton";
+import CustomButton from "../layout/CustomButton";
 // Icon
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";

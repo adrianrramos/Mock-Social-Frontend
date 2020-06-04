@@ -1,7 +1,7 @@
 // Dependencies
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
-import CustomButton from "../CustomButton";
+import CustomButton from "../layout/CustomButton";
 // Material UI
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -20,6 +20,11 @@ const styles = makeStyles({
   ...globalTheme,
   button: {
     float: "right",
+  },
+  editForm: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
   },
 });
 
@@ -72,15 +77,14 @@ const EditDetails = ({ editUserDetails, credentials }) => {
         <EditIcon color="primary" />
       </CustomButton>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle>Edit your details</DialogTitle>
+        <DialogTitle>Edit your profile details</DialogTitle>
         <DialogContent>
-          <form>
+          <form className={classes.editForm}>
             <TextField
               name="bio"
               type="text"
-              label="bio"
-              multiline
-              rows="3"
+              variant="filled"
+              label="bio "
               placeholder="A short bio about yourself"
               className={classes.textFeild}
               value={bio}
@@ -89,6 +93,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
             <TextField
               name="website"
               type="text"
+              variant="filled"
               label="website"
               placeholder="Your own professional/personal site"
               className={classes.textFeild}
@@ -98,6 +103,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
             <TextField
               name="location"
               type="text"
+              variant="filled"
               label="location"
               placeholder="Where you reside"
               className={classes.textFeild}
@@ -110,7 +116,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary">
+          <Button onClick={handleSubmit} color="primary" variant="contained">
             Save
           </Button>
         </DialogActions>

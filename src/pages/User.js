@@ -10,6 +10,7 @@ import globalTheme from "../util/theme";
 //Redux
 import { connect } from "react-redux";
 import { getUserScreamData } from "../redux/actions/dataActions";
+import PostSkeleton from "../components/layout/PostSkeleton";
 
 const styles = makeStyles({ ...globalTheme });
 
@@ -32,7 +33,7 @@ const User = ({ data: { screams, loading }, getUserScreamData, match }) => {
   }, []);
 
   const screamsMarkup = loading ? (
-    <p>Loading Data...</p>
+    <PostSkeleton />
   ) : screams === null ? (
     <p>Sorry, this person has yet to post an Oink!</p>
   ) : !screamIdParam ? (

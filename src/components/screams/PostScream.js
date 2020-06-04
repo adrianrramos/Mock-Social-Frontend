@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import CustomButton from "../CustomButton";
+import CustomButton from "../layout/CustomButton";
 import PropTypes from "prop-types";
 // Material UI
 import makeStyles from "@material-ui/core/styles/makeStyles";

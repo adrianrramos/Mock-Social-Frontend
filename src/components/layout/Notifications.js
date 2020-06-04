@@ -17,9 +17,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
 // Redux
 import { connect } from "react-redux";
-import { markNotificationsRead } from "../redux/actions/userActions";
+import { markNotificationsRead } from "../../redux/actions/userActions";
 
-const Notifications = ({ notifications }) => {
+const Notifications = ({ notifications, markNotificationsRead }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -68,7 +68,7 @@ const Notifications = ({ notifications }) => {
           not.type === "like" ? (
             <FavoriteIcon color={iconColor} style={{ marginRight: 10 }} />
           ) : (
-            <FavoriteIcon color={iconColor} style={{ marginRight: 10 }} />
+            <ChatIcon color={iconColor} style={{ marginRight: 10 }} />
           );
 
         return (
@@ -114,6 +114,7 @@ const Notifications = ({ notifications }) => {
 
 Notifications.propTypes = {
   markNotificationsRead: PropTypes.func.isRequired,
+  notifications: PropTypes.array,
 };
 
 const mapStateToProps = state => ({

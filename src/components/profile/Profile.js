@@ -20,7 +20,7 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Redux
 import { connect } from "react-redux";
 import { uploadImage, logoutUser } from "../../redux/actions/userActions";
-import CustomButton from "../CustomButton";
+import CustomButton from "../layout/CustomButton";
 
 const useStyles = makeStyles({
   ...globalTheme,

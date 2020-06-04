@@ -26,6 +26,7 @@ const globalTheme = {
   },
   textFeild: {
     margin: "10px auto",
+    width: "100%",
   },
   button: {
     margin: "20px auto",

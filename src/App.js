@@ -14,7 +14,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import User from "./pages/User";
 // Components
-import NavBar from "./components/NavBar";
+import NavBar from "./components/layout/NavBar";
 import AuthRoute from "./util/AuthRoute";
 // Redux
 import store from "./redux/store";

@@ -93,11 +93,10 @@ export const editUserDetails = userDetails => dispatch => {
 export const markNotificationsRead = notificationIds => dispatch => {
   axios
     .post("/notifications", notificationIds)
-    .then(res => {
+    .then(() => {
       dispatch({
         type: MARK_NOTIFICATIONS_READ,
       });
-      console.log("we marked them bro");
     })
     .catch(err => console.log(err));
 };

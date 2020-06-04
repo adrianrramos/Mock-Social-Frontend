@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
-import CustomButton from "../CustomButton";
+import CustomButton from "../layout/CustomButton";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import LikeButton from "./LikeButton";
