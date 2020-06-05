@@ -24,9 +24,18 @@ const globalTheme = {
     height: "auto",
     margin: "30px auto",
   },
+  submitForm: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+  },
   textFeild: {
     margin: "10px auto",
     width: "100%",
+  },
+  textRow: {
+    display: "flex",
+    alignItems: "center",
   },
   button: {
     margin: "20px auto",

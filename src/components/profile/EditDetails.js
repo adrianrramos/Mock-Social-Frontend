@@ -21,11 +21,6 @@ const styles = makeStyles({
   button: {
     float: "right",
   },
-  editForm: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
 });
 
 const EditDetails = ({ editUserDetails, credentials }) => {
@@ -79,7 +74,7 @@ const EditDetails = ({ editUserDetails, credentials }) => {
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>Edit your profile details</DialogTitle>
         <DialogContent>
-          <form className={classes.editForm}>
+          <form className={classes.submitForm}>
             <TextField
               name="bio"
               type="text"

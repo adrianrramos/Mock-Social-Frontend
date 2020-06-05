@@ -11,8 +11,8 @@ import Typography from "@material-ui/core/Typography";
 const styles = makeStyles({
   ...globalTheme,
   commentImage: {
-    maxWidth: 100,
-    height: 100,
+    width: 75,
+    height: 75,
     borderRadius: "50%",
     objectFit: "cover",
   },
@@ -29,14 +29,14 @@ const Comments = ({ comments }) => {
             <Fragment key={createdAt}>
               <Grid item sm={10}>
                 <Grid container>
-                  <Grid item sm={5}>
+                  <Grid item sm={3}>
                     <img
                       src={userImage}
                       alt="user who commented"
                       className={classes.commentImage}
                     />
                   </Grid>
-                  <Grid item sm={5}>
+                  <Grid item sm={7}>
                     <div classes={classes.commentData}>
                       <Typography
                         variant="h5"

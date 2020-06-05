@@ -25,10 +25,13 @@ import { getScream } from "../../redux/actions/dataActions";
 const styles = makeStyles({
   ...globalTheme,
   profileImage: {
-    maxWidth: 100,
-    height: 100,
+    width: 75,
+    height: 75,
     borderRadius: "50%",
     objectFit: "cover",
+  },
+  userHandleSpace: {
+    marginRight: 10,
   },
   spinnerDiv: {
     textAlign: "center",
@@ -88,22 +91,24 @@ const ScreamDialog = ({
     </div>
   ) : (
     <Grid container spacing={16}>
-      <Grid item sm={5}>
+      <Grid item sm={3}>
         <img src={userImage} alt="Profile" className={classes.profileImage} />
       </Grid>
-      <Grid item sm={5}>
+      <Grid item sm={7}>
         <Typography
           component={Link}
-          color="primary"
+          color="black"
           variant="h5"
           to={`/users/${userHandle}`}
+          className={classes.userHandleSpace}
         >
-          @{userHandle}
+          {userHandle}
         </Typography>
         <hr />
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body1" color="textSecondary">
           {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
         </Typography>
+
         <hr />
         <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />
@@ -113,7 +118,6 @@ const ScreamDialog = ({
         </CustomButton>
         <span>{commentCount}</span>
       </Grid>
-      <hr classes={classes.hrVisible} />
       <CommentForm screamId={screamId} />
       <Comments comments={comments} />
     </Grid>

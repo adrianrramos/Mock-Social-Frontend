@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 // Material UI
 import Button from "@material-ui/core/Button";
@@ -11,7 +11,22 @@ import globalTheme from "../../util/theme";
 import { connect } from "react-redux";
 import { postSingleComment } from "../../redux/actions/dataActions";
 
-const style = makeStyles({ ...globalTheme });
+const style = makeStyles({
+  ...globalTheme,
+  submitComment: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+  },
+  textFeildComment: {
+    margin: 10,
+    width: "70%",
+  },
+  sendBtnComment: {
+    width: "30%",
+    height: "50%",
+  },
+});
 
 const CommentForm = ({
   screamId,
@@ -40,13 +55,16 @@ const CommentForm = ({
   };
 
   const commentFormMarkup = authenticated ? (
-    <Grid item sm={5}>
-      <form onSubmit={e => e.preventDefault()}>
+    <Fragment>
+      <form
+        onSubmit={e => e.preventDefault()}
+        className={classes.submitComment}
+      >
         <TextField
           name="body"
           type="text"
           label="Leave a comment"
-          className={classes.textFeild}
+          className={classes.textFeildComment}
           value={body}
           onChange={event => setBody(event.target.value)}
           error={errors.comment ? true : false}
@@ -54,9 +72,10 @@ const CommentForm = ({
         ></TextField>
         <Button
           onClick={handlePostComment}
-          variant="contained"
+          variant="outlined"
           color="primary"
           disabled={loading}
+          className={classes.sendBtnComment}
         >
           SEND
           {loading && (
@@ -68,7 +87,7 @@ const CommentForm = ({
         </Button>
       </form>
       <hr className={classes.hrVisible} />
-    </Grid>
+    </Fragment>
   ) : null;
 
   return commentFormMarkup;

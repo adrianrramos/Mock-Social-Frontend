@@ -34,10 +34,6 @@ const useStyles = makeStyles({
     padding: "5px 0 0 25px",
     objectFit: "cover",
   },
-  textRow: {
-    display: "flex",
-    alignItems: "center",
-  },
   userName: {
     marginRight: 10,
   },
