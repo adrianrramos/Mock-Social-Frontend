@@ -52,6 +52,15 @@ const useStyles = makeStyles({
   loginSignup: {
     borderRadius: 20,
   },
+  paperNoAuth: {
+    height: 150,
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "space-between",
+  },
+  noAuthTitle: {
+    height: "50%",
+  },
 });
 
 const Profile = ({
@@ -146,8 +155,8 @@ const Profile = ({
         </div>
       </Paper>
     ) : (
-      <Paper className={classes.paper} variant="outlined">
-        <Typography variant="h6" align="center">
+      <Paper className={classes.paperNoAuth} variant="outlined">
+        <Typography variant="h6" align="center" className={classes.noAuthTitle}>
           No profile found, please login
         </Typography>
         <div className={classes.profileButtons}>

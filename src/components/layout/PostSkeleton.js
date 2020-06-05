@@ -1,12 +1,9 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import NoImg from "../../images/no-img.png";
 // Material UI
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import globaleTheme from "../../util/theme";
 import globalTheme from "../../util/theme";
 
 const styles = makeStyles({
@@ -29,12 +26,14 @@ const styles = makeStyles({
     width: 60,
     height: 20,
     backgroundColor: globalTheme.palette.primary.main,
+    opacity: 0.55,
     margin: 7,
   },
   date: {
     height: 14,
     width: 100,
     backgroundColor: "rgba(0,0,0,0.3)",
+    opacity: 0.55,
     marginBottom: 5,
   },
   fullLine: {
@@ -42,6 +41,7 @@ const styles = makeStyles({
     width: "90%",
     marginBottom: 5,
     backgroundColor: "rgba(0,0,0,0.3)",
+    opacity: 0.55,
   },
 });
 
@@ -50,7 +50,7 @@ const PostSkeleton = () => {
 
   const content = Array.from({ length: 5 }).map((item, index) => (
     <Card className={classes.card} key={index} variant="outlined">
-      <img className={classes.cover} src={NoImg} />
+      <img className={classes.cover} src={NoImg} alt="this user" />
       <CardContent className={classes.cardContent}>
         <div className={classes.handle} />
         <div className={classes.date} />
