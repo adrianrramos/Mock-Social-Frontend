@@ -21,46 +21,10 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 import { connect } from "react-redux";
 import { uploadImage, logoutUser } from "../../redux/actions/userActions";
 import CustomButton from "../layout/CustomButton";
+import ProfileSkeleton from "../layout/ProfileSkeleton";
 
 const useStyles = makeStyles({
   ...globalTheme,
-  image: {
-    width: 150,
-    height: 150,
-    objectFit: "cover",
-    borderRadius: "50%",
-    margin: "10px 0 0 15px",
-  },
-  profile: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  profileButtons: {
-    margin: "10px auto",
-    height: 35,
-    width: "50%",
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  profileBottomButtons: {
-    width: "90%",
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  loginSignup: {
-    borderRadius: 20,
-  },
-  paperNoAuth: {
-    height: 150,
-    display: "flex",
-    flexDirection: "column",
-    alignContent: "space-between",
-  },
-  noAuthTitle: {
-    height: "50%",
-  },
 });
 
 const Profile = ({
@@ -119,7 +83,7 @@ const Profile = ({
               color="primary"
               variant="h5"
             >
-              @{handle}
+              {handle}
             </MuiLink>
             <hr />
             {bio && <Typography variant="body2">{bio}</Typography>}
@@ -182,7 +146,7 @@ const Profile = ({
       </Paper>
     )
   ) : (
-    <p> loading...</p>
+    <ProfileSkeleton />
   );
 
   return profileMarkup;

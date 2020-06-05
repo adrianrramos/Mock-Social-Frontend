@@ -16,6 +16,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //Redux
 import { connect } from "react-redux";
 import { postScream, clearErrors } from "../../redux/actions/dataActions";
+import { DialogContent } from "@material-ui/core";
 
 const styles = makeStyles({
   ...globalTheme,
@@ -60,34 +61,34 @@ const PostScream = ({ postScream, clearErrors, UI: { loading }, UI }) => {
         <AddIcon />
       </CustomButton>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <CustomButton
-          tip="Close"
-          placement="top"
-          onClick={handleClose}
-          className={classes.closeButton}
-        >
-          <CloseIcon />
-        </CustomButton>
         <DialogTitle>
           Oink what's on your mind!{" "}
           <span role="img" aria-label="Pig">
             🐷
           </span>
         </DialogTitle>
-        <form onSubmit={e => e.preventDefault()}>
-          <TextField
-            name="body"
-            type="text"
-            label="body"
-            placeholder="Oink away..."
-            className={classes.textFeild}
-            value={body}
-            onChange={event => setBody(event.target.value)}
-            error={errors.body ? true : false}
-            helperText={errors.body}
-          ></TextField>
-        </form>
+        <DialogContent>
+          <form
+            onSubmit={e => e.preventDefault()}
+            className={classes.submitForm}
+          >
+            <TextField
+              name="body"
+              type="text"
+              label="body"
+              placeholder="Oink away..."
+              className={classes.textFeild}
+              value={body}
+              onChange={event => setBody(event.target.value)}
+              error={errors.body ? true : false}
+              helperText={errors.body}
+            ></TextField>
+          </form>
+        </DialogContent>
         <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
           <Button
             onClick={handlePostScream}
             variant="contained"

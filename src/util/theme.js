@@ -24,6 +24,7 @@ const globalTheme = {
     height: "auto",
     margin: "30px auto",
   },
+  // DIALOGS
   submitForm: {
     display: "flex",
     flexDirection: "column",
@@ -52,6 +53,46 @@ const globalTheme = {
   },
   deleteButton: {
     marginRight: "30px",
+  },
+  // PROFILE STYLING
+  image: {
+    width: 150,
+    height: 150,
+    objectFit: "cover",
+    borderRadius: "50%",
+    margin: 10,
+    textAlign: "center",
+  },
+  profile: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
+  profileButtons: {
+    margin: "10px auto",
+    height: 35,
+    width: "50%",
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  profileBottomButtons: {
+    width: "90%",
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  loginSignup: {
+    borderRadius: 20,
+  },
+  paperNoAuth: {
+    height: 150,
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "space-between",
+  },
+  noAuthTitle: {
+    height: "50%",
   },
 };
 

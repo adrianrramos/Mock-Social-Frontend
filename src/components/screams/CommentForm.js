@@ -25,6 +25,7 @@ const style = makeStyles({
   sendBtnComment: {
     width: "30%",
     height: "50%",
+    marginBottom: -12,
   },
 });
 

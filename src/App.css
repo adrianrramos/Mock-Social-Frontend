@@ -35,3 +35,7 @@ hr {
   border: none;
   margin: 4px auto;
 }
+
+.image-wrapper {
+  margin-left: 50px;
+}
