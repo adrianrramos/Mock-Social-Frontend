@@ -13,7 +13,16 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
-const styles = makeStyles({ ...globalTheme });
+const styles = makeStyles({
+  ...globalTheme,
+  imageStatic: {
+    width: 150,
+    height: 150,
+    objectFit: "cover",
+    borderRadius: "50%",
+    margin: "auto 0",
+  },
+});
 
 const StaticProfile = ({
   profile: { handle, createdAt, bio, website, location, imageUrl },
@@ -23,7 +32,11 @@ const StaticProfile = ({
     <Paper className={classes.paper}>
       <div className={classes.profile}>
         <div className="image-wrapper">
-          <img src={imageUrl} alt="user profile" />
+          <img
+            src={imageUrl}
+            alt="user profile"
+            className={classes.imageStatic}
+          />
         </div>
         <hr />
         <div className="profile-details">
