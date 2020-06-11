@@ -40,13 +40,24 @@ hr {
   margin-left: 50px;
 }
 
+/* MOBILE LAYOUT */
+
 @media only screen and (max-width: 600px) {
   .makeStyles-content-346 {
     padding: 0;
   }
 
+  .MuiGrid-item {
+    width: 100%;
+  }
+
   .makeStyles-paperNoAuth-196 {
-    display: none;
+    padding: 20px;
+    display: none !important;
+  }
+
+  .makeStyles-card-344 {
+    padding-right: 10px;
   }
 
   .container {

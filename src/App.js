@@ -23,8 +23,10 @@ import { logoutUser, getUserData } from "./redux/actions/userActions";
 
 const theme = createMuiTheme({ ...globalTheme });
 
-const token = localStorage.FBIdToken;
+axios.defaults.baseURL =
+  "https://us-central1-socialchimp-5c8f3.cloudfunctions.net/api";
 
+const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {

@@ -21,7 +21,6 @@ import { markNotificationsRead } from "../../redux/actions/userActions";
 
 const Notifications = ({ notifications, markNotificationsRead }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
 
   const handleOpen = event => {
     setAnchorEl(event.target);
