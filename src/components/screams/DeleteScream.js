@@ -16,8 +16,10 @@ import { deleteScream } from "../../redux/actions/dataActions";
 
 const styles = makeStyles({
   ...globalTheme,
-  deleteButtonPosition: {
-    marginLeft: 200,
+  deleteButton: {
+    position: "absolute",
+    left: "90%",
+    top: "-2%",
   },
 });
 
@@ -44,7 +46,6 @@ const DeleteScream = ({ screamId, deleteScream }) => {
         tip="Delete Scream"
         onClick={handleOpen}
         btnClassname={classes.deleteButton}
-        className={classes.deleteButtonPosition}
       >
         <DeleteOutline />
       </CustomButton>

@@ -94,6 +94,9 @@ const globalTheme = {
   noAuthTitle: {
     height: "50%",
   },
+  paper: {
+    padding: 30,
+  },
 };
 
 export default globalTheme;

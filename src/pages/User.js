@@ -5,14 +5,11 @@ import Scream from "../components/screams/Scream";
 import StaticProfile from "../components/profile/StaticProfile";
 // Material UI
 import Grid from "@material-ui/core/Grid";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import globalTheme from "../util/theme";
 //Redux
 import { connect } from "react-redux";
 import { getUserScreamData } from "../redux/actions/dataActions";
 import PostSkeleton from "../components/layout/PostSkeleton";
-
-const styles = makeStyles({ ...globalTheme });
+import ProfileSkeleton from "../components/layout/ProfileSkeleton";
 
 const User = ({ data: { screams, loading }, getUserScreamData, match }) => {
   const [profile, setProfile] = useState(null);
@@ -50,20 +47,15 @@ const User = ({ data: { screams, loading }, getUserScreamData, match }) => {
     })
   );
 
-  const classes = styles();
   return (
     <Grid container spacing={0}>
-      <Grid item md={3} sm={2} xs={12}></Grid>
+      <Grid item md={3} sm={2} xs={12}>
+        {profile ? <StaticProfile profile={profile} /> : <ProfileSkeleton />}
+      </Grid>
       <Grid item md={6} sm={8} xs={12}>
         {screamsMarkup}
       </Grid>
-      <Grid item md={3} sm={2} xs={12}>
-        {profile ? (
-          <StaticProfile profile={profile} />
-        ) : (
-          <p>Loading Profile...</p>
-        )}
-      </Grid>
+      <Grid item md={3} sm={2} xs={12}></Grid>
     </Grid>
   );
 };

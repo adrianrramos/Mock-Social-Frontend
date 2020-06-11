@@ -39,3 +39,21 @@ hr {
 .image-wrapper {
   margin-left: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+  .makeStyles-content-346 {
+    padding: 0;
+  }
+
+  .makeStyles-paperNoAuth-196 {
+    display: none;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .MuiGrid-container {
+    margin-top: -40px;
+  }
+}

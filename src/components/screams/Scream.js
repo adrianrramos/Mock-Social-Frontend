@@ -21,6 +21,7 @@ import { connect } from "react-redux";
 
 const useStyles = makeStyles({
   card: {
+    position: "relative",
     display: "flex",
     borderRadius: 0,
   },

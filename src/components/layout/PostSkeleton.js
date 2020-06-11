@@ -10,6 +10,8 @@ const styles = makeStyles({
   ...globalTheme,
   card: {
     display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   cardContent: {
     width: "100%",
