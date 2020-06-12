@@ -8,7 +8,7 @@ Thank you for checking out this coding project, click here to see a [LIVE DEMO](
 
 This repository is the frontend portion, to see the work that was put into the backend of this project please check out this [REPO](https://github.com/ramos-codes/Mock-Social-Backend)
 
-The Objective
+## The Objective
 
 As part of an attempt to challenge and test my skills with React/Redux, backend development and CSS styling, I found this project through an online course provided by [Ahmed Hadjou](https://github.com/hidjou).
 
@@ -25,13 +25,13 @@ Users should be able to:
 - Receive unread notifications and mark those notifications as read
 - Share a post link and reference that link to be directed to that post only
 
-What I Learned
+## What I Learned
 
 As mentioned before the source code for the backend can be found [here](https://github.com/ramos-codes/Mock-Social-Backend)
 
 Some of the tools and technologies I got my hands on with this project I have never touched before, others I have. The following tools were used to build out the frontend of this project:
-Material UI => to handle the responsiveness and styling of all components across the site
 
+- Material UI => to handle the responsiveness and styling of all components across the site
 - React => my personal favorite of the frontend frameworks
 - Redux => to manage state and dispatch calls to the firebase API
 
