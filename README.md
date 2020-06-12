@@ -32,7 +32,7 @@ As mentioned before the source code for the backend can be found [here](https://
 Some of the tools and technologies I got my hands on with this project I have never touched before, others I have. The following tools were used to build out the frontend of this project:
 
 - Material UI => to handle the responsiveness and styling of all components across the site
-- React => my personal favorite of the frontend frameworks
+- React => the best javascript library in the world
 - Redux => to manage state and dispatch calls to the firebase API
 
 I was faced with a few challenges throughout the build. However, those challenges have helped me grow and develop a stronger skill set for web development
@@ -52,4 +52,4 @@ Most importantly this project has given me more hours to work with React code an
 
 ![Another preview of the desktop](./public/showcase_gifs/desktop-video1.gif)
 
-![still of the desktop](./public/showcase_gifs/dsk-preview)
+![still of the desktop](./public/showcase_gifs/dsk-preview.png)
