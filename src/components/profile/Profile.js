@@ -25,6 +25,12 @@ import ProfileSkeleton from "../layout/ProfileSkeleton";
 
 const useStyles = makeStyles({
   ...globalTheme,
+  loginSignup: {
+    borderRadius: "20px",
+    padding: "10px 0",
+    width: "75px",
+    margin: "0 5px",
+  },
 });
 
 const Profile = ({

@@ -73,7 +73,6 @@ const globalTheme = {
   profileButtons: {
     margin: "10px auto",
     height: 35,
-    width: "50%",
     display: "flex",
     justifyContent: "space-between",
   },
